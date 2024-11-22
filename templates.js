@@ -16,7 +16,7 @@ if (proyecto === "1") {
 } else if (proyecto === "2") {
     cargarTemplate("template-proyecto2");
 } else if (proyecto === "3") {
-    cargarTemplate("template-proyecto2");
+    cargarTemplate("template-proyecto3");
 } else if (proyecto === "4") {
-    cargarTemplate("template-proyecto2");
+    cargarTemplate("template-proyecto4");
 }
