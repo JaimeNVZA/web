@@ -163,7 +163,7 @@
         #habilidades ul {
             list-style: none;
             padding: 0;
-            margin-left: 25%;
+            text-align: center;
         }
 
         #habilidades ul li {
