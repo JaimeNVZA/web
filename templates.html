@@ -290,6 +290,71 @@
 </template>
 
 
+<!-- Proyecto 5 -->
+
+<template id="template-proyecto5">
+    <div class="proyectos">
+        <header>
+            <h1>Análisis Difuso de Sentimientos</h1>
+            <p>Aplicación de escritorio</p>
+            <nav class="project1">
+                <ul>
+                    <li><a href="./index.html">Vovler a Inicio</a></li>
+                </ul>
+            </nav>
+        </header>
+
+        <section id="imagenes">
+            <h2>Imágenes</h2>
+            <div class="galeria">
+                <img id="imagenActual" class="imagen-actual" src="./images/bt/1.png" alt="Imagen Actual">
+                <a id="botonAnterior" class="btn">&lt</a>    
+                <ul id="listaImagenes" style="display: none;">
+                    <li><img src="./images/ff/1.png" alt="CMS1"></li>
+                </ul>                
+                <a id="botonSiguiente" class="btn">&gt</a>
+            </div>
+            <script src="galeria.js"></script>
+        </section>
+
+        <section id="tecnologias">
+            <h2>Tecnologías</h2>
+            <div class="lenguajes">
+                <a href="https://www.python.org" target="_blank" rel="noreferrer"> <img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/python/python-original.svg" alt="python" width="40" height="40"/> </a> 
+                <a href="https://docs.python.org/3/library/tkinter.html" target="_blank" rel="noreferrer"> <img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/python/python-original.svg" alt="python" width="40" height="40"/> </a> 
+            </div>    
+        </section>
+
+        <section id="funcionamiento">
+            <h2>Funcionamiento</h2>
+            <p>
+                Este programa lo hice para analizar sentimientos en textos usando lógica difusa. La idea es que puedas cargar un archivo CSV 
+                con frases o comentarios, y el programa te dice si cada texto es positivo, negativo o neutro. Todo esto lo muestra en una 
+                tabla fácil de entender.
+            </p>
+            <p>
+                Primero, limpio el texto para quitar palabras irrelevantes, como "el", "y", "de", etc., usando técnicas de procesamiento de 
+                lenguaje natural. Luego, aplico análisis de sentimientos con VaderSentiment para sacar puntajes positivos y negativos. Después, 
+                con lógica difusa, evalúo esos puntajes y obtengo un resultado más preciso, que es el sentimiento final.
+            </p>
+            <p>
+            <strong>
+                ¿Para qué sirve?
+                <br>
+            </strong>
+                Si necesitas analizar opiniones de clientes, comentarios en redes sociales o cualquier tipo de texto y no quieres complicarte con 
+                procesos manuales, este programa te ahorra mucho tiempo. También es útil para proyectos académicos o análisis de datos sentimentales.
+            </p>
+        </section>
+
+        <section id="verCodigo">
+            <h2>Revisar código</h2>
+            <a href="https://github.com/JaimeNVZA/FeelFuzzy" class="btn">Ver en GitHub</a>
+        </section>
+    </div>
+</template>
+
+
 <!-- Contactos -->
 <div class="proyectos">
     <section id="contact">

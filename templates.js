@@ -19,4 +19,6 @@ if (proyecto === "1") {
     cargarTemplate("template-proyecto3");
 } else if (proyecto === "4") {
     cargarTemplate("template-proyecto4");
+} else if (proyecto === "5") {
+    cargarTemplate("template-proyecto5");
 }
