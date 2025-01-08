@@ -151,7 +151,7 @@
         }
         
         .project a{
-            margin-top: 0;
+            margin-top: 5px;
         }
 
         .project p{
@@ -160,6 +160,14 @@
             margin-left: 5px;
         }
 
+        .project img:nth-of-type(1) {
+            min-width: 250px;
+        }
+
+        .project p img:nth-of-type(1) {
+            min-width: 0%;
+        }
+        
         #habilidades ul {
             list-style: none;
             padding: 0;
@@ -213,6 +221,7 @@
         .galeria {
             text-align: center;
         }
+
         .imagen-actual {
             max-width: 100%;
             height: auto;
