@@ -3,138 +3,493 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Portafolio</title>
+    <title>Jaime Núñez Viedma | Desarrollador de Software</title>
+    <meta name="description" content="Portafolio de Jaime Núñez Viedma — Desarrollador Web y de Software especializado en backend con Python y Django.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="estilos.css">
 </head>
 <body>
-    <header>
-        <h1>Jaime Núñez Viedma</h1>
-        <p>Desarrollador Web | Desarrollador de Software</p>
-        <nav>
-            <ul>
+
+    <!-- ===== NAVBAR ===== -->
+    <nav class="navbar" id="navbar">
+        <div class="nav-container">
+            <a href="#hero" class="nav-logo">JNV</a>
+            <ul class="nav-links" id="navLinks">
                 <li><a href="#about">Sobre Mí</a></li>
+                <li><a href="#habilidades">Habilidades</a></li>
+                <li><a href="#experiencia">Experiencia</a></li>
                 <li><a href="#projects">Proyectos</a></li>
                 <li><a href="#contact">Contacto</a></li>
             </ul>
-        </nav>
-    </header>
+            <a href="./CV_JAIME_NUNEZ.pdf" class="btn btn-nav" download>CV</a>
+            <button class="nav-toggle" id="navToggle" aria-label="Menú">
+                <span></span><span></span><span></span>
+            </button>
+        </div>
+    </nav>
 
-    <section id="about">
-        <h2>Sobre Mí</h2>
-        <p>Soy estudiante de Ingeniería Informática y estoy apasionado por el desarrollo de software. 
-            Me mantengo en constante aprendizaje, disfrutando cada oportunidad para resolver problemas 
-            a través del código. A lo largo de mi trayectoria, he trabajado en diversos proyectos académicos 
-            y personales que me han permitido afinar mis habilidades técnicas.
-        </p>
-        <a href="./CV_JAIME_NUNEZ.pdf" class="btn" download>Descargar CV</a>
-    </section>
-
-    <section id="habilidades">
-        <h2>Habilidades</h2>
-        <p>
-            Mi experiencia abarca una variedad de tipos de proyectos, incluyendo desarrollo web, 
-            software de escritorio y aplicaciones móviles. Sin embargo, mi verdadera especialidad 
-            radica en el backend, donde aplico mis conocimientos para 
-            crear soluciones eficientes.
-        </p>
-        <p>
-            Manejo varias tecnologías pero las más importantes son:
-        </p>
-        <ul>
-            <li><a href="https://www.djangoproject.com/" target="_blank" rel="noreferrer"> <img src="https://cdn.worldvectorlogo.com/logos/django.svg" alt="django" width="70" height="70"/> </a> </li>
-            <li><a href="https://www.python.org" target="_blank" rel="noreferrer"> <img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/python/python-original.svg" alt="python" width="70" height="70"/> </a> </li>
-            <li><a href="https://www.java.com" target="_blank" rel="noreferrer"> <img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/java/java-original.svg" alt="java" width="70" height="70"/> </a> </li>
-            <li><a href="https://www.postgresql.org" target="_blank" rel="noreferrer"> <img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/postgresql/postgresql-original-wordmark.svg" alt="postgresql" width="70" height="70"/> </a> </li>
-        </ul>
-    </section>
-    
-    <section id="projects">
-        <h2>Proyectos</h2>
-        <div class="project">
-            <h3>Sistema de Gestión de Contenido (CMS)</h3>
-            <img src="images/CMS1.png" alt="" width="30%">
-            <div class="lenguajesMini">
-                <p><img src="https://cdn.worldvectorlogo.com/logos/django.svg" alt="django" width=40" height=40"/></p>
+    <!-- ===== HERO ===== -->
+    <section id="hero">
+        <div class="hero-bg"></div>
+        <div class="hero-content">
+            <p class="hero-greeting">Hola, me llamo</p>
+            <h1 class="hero-name">Jaime Núñez Viedma.</h1>
+            <h2 class="hero-title">
+                <span id="typedText"></span><span class="cursor">|</span>
+            </h2>
+            <p class="hero-description">
+                Desarrollador Backend especializado en <strong>Python, Odoo y REST APIs</strong>.
+                Me enfoco en la automatización de procesos empresariales y en construir
+                soluciones robustas con Python.
+            </p>
+            <div class="hero-cta">
+                <a href="#projects" class="btn btn-primary">Ver Proyectos</a>
+                <a href="./CV_JAIME_NUNEZ.pdf" class="btn btn-outline" download>Descargar CV</a>
             </div>
-            <a onclick="window.open('templates.html?proyecto=1', '_self')" class="btn">Ver más</a>
-            <a href="https://github.com/JaimeNVZA/CMS" class="btn">Ver en GitHub</a>
         </div>
-        <div class="project">
-            <h3>Billetera virtual</h3>
-            <img src="images/Billetera2.png" alt="" width="30%">
-            <div class="lenguajesMini">
-                <p><img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/python/python-original.svg" alt="python" width=40" height=40"/></p>    
-            </div>
-            <a onclick="window.open('templates.html?proyecto=4', '_self')" class="btn">Ver más</a>
-            <a href="https://github.com/JaimeNVZA/PerFinan" class="btn">Ver en GitHub</a>
-        </div>
-        <div class="project">
-            <h3>Análisis Difuso de Sentimientos</h3>
-            <img src="images/Fuzzy.png" alt="" width="30%">
-            <div class="lenguajesMini">
-                <p><img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/python/python-original.svg" alt="python" width=40" height=40"/></p>    
-            </div>
-            <a onclick="window.open('templates.html?proyecto=5', '_self')" class="btn">Ver más</a>
-            <a href="https://github.com/JaimeNVZA/FeelFuzzy" class="btn">Ver en GitHub</a>
-        </div>
-        <div class="project">
-            <h3>Web Banking</h3>
-            <img src="images/WB2.png" alt="" width="30%">
-            <div class="lenguajesMini">
-                <p><img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/java/java-original.svg" alt="java" width="40" height="40"/></p>
-            </div>
-            <a onclick="window.open('templates.html?proyecto=2', '_self')" class="btn">Ver más</a>
-            <a href="https://github.com/JaimeNVZA/Web-Banking" class="btn">Ver en GitHub</a>
-        </div>
-        <div class="project">
-            <h3>Gestor de proyectos</h3>
-            <img src="images/Gestor2.png" alt="" width="30%">
-            <div class="lenguajesMini">
-                <p><img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/python/python-original.svg" alt="python" width=40" height=40"/></p>    
-            </div>
-            <a onclick="window.open('templates.html?proyecto=3', '_self')" class="btn">Ver más</a>
-            <a href="https://github.com/JaimeNVZA/Gestor-de-proyectos" class="btn">Ver en GitHub</a>
-        </div>
-        <div class="project">
-            <h3>Monitor de Consumo Bovino</h3>
-            <img src="images/ci/5.png" alt="" width="30%">
-            <div class="lenguajesMini">
-                <p><img src="https://cdn.worldvectorlogo.com/logos/arduino-1.svg" alt="arduino" width="40" height="40"/> </a></p>
-                <p><img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/python/python-original.svg" alt="python" width=40" height=40"/></p>
-            </div>
-            <a onclick="window.open('templates.html?proyecto=6', '_self')" class="btn">Ver más</a>
-            <a href="https://github.com/JaimeNVZA/SmartFeeding" class="btn">Ver en GitHub</a>
+        <div class="hero-scroll">
+            <span>scroll</span>
+            <div class="scroll-line"></div>
         </div>
     </section>
 
-    <section id="contact">
-        <h2>Contacto</h2>
-        <p>Puedes contactarme a través de los siguientes:</p>
-        <ul>
-            <li>Tel: 0972 391 492</li>
-            <li><a href="mailto:jaimenunezviedma@gmail.com">jaimenunezviedma@gmail.com</a></li>
-            <li><a href="https://www.linkedin.com/in/jaime-nunez-viedma" target="_blank">LinkedIn</a></li>
-            <li><a href="https://github.com/JaimeNVZA" target="_blank">GitHub</a></li>
-        </ul>
+    <!-- ===== ABOUT ===== -->
+    <section id="about" class="section">
+        <div class="section-container">
+            <h2 class="section-title">
+                <span class="section-number">01.</span> Sobre Mí
+            </h2>
+            <div class="about-grid">
+                <div class="about-text">
+                    <p>
+                        Soy <strong>Desarrollador Backend</strong> con experiencia en Python, Odoo y REST APIs,
+                        enfocado en la <strong>automatización de procesos empresariales</strong>. Actualmente
+                        trabajo en Interfaces de forma remota, luego de un año de experiencia en SATI.
+                    </p>
+                    <p>
+                        A lo largo de mi trayectoria he desarrollado proyectos que abarcan desde
+                        <strong>aplicaciones web</strong> hasta <strong>sistemas embebidos IoT</strong>,
+                        pasando por software de escritorio, IA y bases de datos relacionales.
+                    </p>
+                    <p>
+                        Mi especialidad es el <strong>backend con Python y PostgreSQL</strong>, construyendo
+                        arquitecturas limpias, eficientes y bien documentadas. Sin embargo, también domino
+                        el stack completo cuando el proyecto lo requiere.
+                    </p>
+                    <a href="./CV_JAIME_NUNEZ.pdf" class="btn btn-primary" download>Descargar CV</a>
+                </div>
+                <div class="about-image">
+                    <div class="image-frame">
+                        <img src="images/foto_perfil.png" alt="Jaime Núñez Viedma" class="profile-photo">
+                    </div>
+                </div>
+            </div>
+        </div>
     </section>
 
-    <!-- Botón de contacto flotante -->
-    <button class="btn-contacto" id="botonContacto">Contacto</button>
+    <!-- ===== HABILIDADES ===== -->
+    <section id="habilidades" class="section section-alt">
+        <div class="section-container">
+            <h2 class="section-title">
+                <span class="section-number">02.</span> Habilidades
+            </h2>
+            <div class="skills-grid">
+                <div class="skill-category">
+                    <h3>Backend</h3>
+                    <div class="skill-tags">
+                        <span class="skill-tag">Python</span>
+                        <span class="skill-tag">Django</span>
+                        <span class="skill-tag">Odoo</span>
+                        <span class="skill-tag">REST APIs</span>
+                        <span class="skill-tag">Java</span>
+                        <span class="skill-tag">JavaFX</span>
+                    </div>
+                </div>
+                <div class="skill-category">
+                    <h3>Frontend</h3>
+                    <div class="skill-tags">
+                        <span class="skill-tag">HTML</span>
+                        <span class="skill-tag">CSS</span>
+                        <span class="skill-tag">JavaScript</span>
+                        <span class="skill-tag">React</span>
+                        <span class="skill-tag">XML</span>
+                        <span class="skill-tag">Bootstrap</span>
+                    </div>
+                </div>
+                <div class="skill-category">
+                    <h3>Bases de Datos</h3>
+                    <div class="skill-tags">
+                        <span class="skill-tag">PostgreSQL</span>
+                        <span class="skill-tag">MySQL</span>
+                    </div>
+                </div>
+                <div class="skill-category">
+                    <h3>DevOps & Tools</h3>
+                    <div class="skill-tags">
+                        <span class="skill-tag">Git</span>
+                        <span class="skill-tag">Linux</span>
+                        <span class="skill-tag">Nginx</span>
+                        <span class="skill-tag">Bash</span>
+                        <span class="skill-tag">Arduino</span>
+                    </div>
+                </div>
+                <div class="skill-category">
+                    <h3>Otros Lenguajes</h3>
+                    <div class="skill-tags">
+                        <span class="skill-tag">C</span>
+                        <span class="skill-tag">C++</span>
+                        <span class="skill-tag">Kotlin</span>
+                        <span class="skill-tag">React Native</span>
+                        <span class="skill-tag">Tkinter</span>
+                    </div>
+                </div>
+                <div class="skill-category">
+                    <h3>Áreas</h3>
+                    <div class="skill-tags">
+                        <span class="skill-tag">Automatización</span>
+                        <span class="skill-tag">ERP / Odoo</span>
+                        <span class="skill-tag">PLN / NLP</span>
+                        <span class="skill-tag">Lógica Difusa</span>
+                        <span class="skill-tag">IoT</span>
+                        <span class="skill-tag">OOP</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="tech-icons-row">
+                <a href="https://www.python.org" target="_blank" rel="noreferrer" class="tech-icon" title="Python">
+                    <img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/python/python-original.svg" alt="python"/>
+                </a>
+                <a href="https://www.djangoproject.com/" target="_blank" rel="noreferrer" class="tech-icon" title="Django">
+                    <img src="https://cdn.worldvectorlogo.com/logos/django.svg" alt="django"/>
+                </a>
+                <a href="https://www.java.com" target="_blank" rel="noreferrer" class="tech-icon" title="Java">
+                    <img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/java/java-original.svg" alt="java"/>
+                </a>
+                <a href="https://www.postgresql.org" target="_blank" rel="noreferrer" class="tech-icon" title="PostgreSQL">
+                    <img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/postgresql/postgresql-original-wordmark.svg" alt="postgresql"/>
+                </a>
+                <a href="https://reactjs.org/" target="_blank" rel="noreferrer" class="tech-icon" title="React">
+                    <img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/react/react-original-wordmark.svg" alt="react"/>
+                </a>
+                <a href="https://www.typescriptlang.org/" target="_blank" rel="noreferrer" class="tech-icon" title="TypeScript">
+                    <img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/typescript/typescript-original.svg" alt="typescript"/>
+                </a>
+                <a href="https://git-scm.com/" target="_blank" rel="noreferrer" class="tech-icon" title="Git">
+                    <img src="https://www.vectorlogo.zone/logos/git-scm/git-scm-icon.svg" alt="git"/>
+                </a>
+                <a href="https://www.linux.org/" target="_blank" rel="noreferrer" class="tech-icon" title="Linux">
+                    <img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/linux/linux-original.svg" alt="linux"/>
+                </a>
+                <a href="https://www.mysql.com/" target="_blank" rel="noreferrer" class="tech-icon" title="MySQL">
+                    <img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/mysql/mysql-original-wordmark.svg" alt="mysql"/>
+                </a>
+                <a href="https://www.nginx.com" target="_blank" rel="noreferrer" class="tech-icon" title="Nginx">
+                    <img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/nginx/nginx-original.svg" alt="nginx"/>
+                </a>
+                <a href="https://www.arduino.cc/" target="_blank" rel="noreferrer" class="tech-icon" title="Arduino">
+                    <img src="https://cdn.worldvectorlogo.com/logos/arduino-1.svg" alt="arduino"/>
+                </a>
+                <a href="https://getbootstrap.com" target="_blank" rel="noreferrer" class="tech-icon" title="Bootstrap">
+                    <img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/bootstrap/bootstrap-plain-wordmark.svg" alt="bootstrap"/>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== EXPERIENCIA & EDUCACIÓN ===== -->
+    <section id="experiencia" class="section">
+        <div class="section-container">
+            <h2 class="section-title">
+                <span class="section-number">03.</span> Experiencia &amp; Educación
+            </h2>
+            <div class="timeline-wrapper">
+                <div class="timeline-col">
+                    <h3 class="timeline-col-title">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="18" height="18">
+                            <rect x="2" y="7" width="20" height="14" rx="2" ry="2"/>
+                            <path d="M16 21V5a2 2 0 00-2-2h-4a2 2 0 00-2 2v16"/>
+                        </svg>
+                        Experiencia
+                    </h3>
+                    <div class="timeline">
+                        <div class="timeline-item reveal">
+                            <div class="timeline-dot"></div>
+                            <div class="timeline-card">
+                                <span class="timeline-date">ene. 2026 — actualidad · En remoto</span>
+                                <h4 class="timeline-role">Desarrollador de Python</h4>
+                                <p class="timeline-company">Interfaces &mdash; Jornada completa &middot; Asunción, Paraguay</p>
+                                <div class="timeline-tags">
+                                    <span>Python</span><span>Backend</span><span>REST APIs</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="timeline-item reveal">
+                            <div class="timeline-dot"></div>
+                            <div class="timeline-card">
+                                <span class="timeline-date">feb. 2025 — ene. 2026 · 1 año · Presencial</span>
+                                <h4 class="timeline-role">Desarrollador de Python</h4>
+                                <p class="timeline-company">SATI &mdash; Jornada completa &middot; Asunción, Paraguay</p>
+                                <div class="timeline-tags">
+                                    <span>Python</span><span>Backend</span><span>PostgreSQL</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="timeline-col">
+                    <h3 class="timeline-col-title">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="18" height="18">
+                            <path d="M22 10v6M2 10l10-5 10 5-10 5z"/>
+                            <path d="M6 12v5c3 3 9 3 12 0v-5"/>
+                        </svg>
+                        Educación
+                    </h3>
+                    <div class="timeline">
+                        <div class="timeline-item reveal">
+                            <div class="timeline-dot"></div>
+                            <div class="timeline-card">
+                                <span class="timeline-date">En curso</span>
+                                <h4 class="timeline-role">Ingeniería Informática</h4>
+                                <p class="timeline-company">Formación en desarrollo de software, estructuras de datos, algoritmos, bases de datos y sistemas operativos.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== PROYECTOS ===== -->
+    <section id="projects" class="section section-alt">
+        <div class="section-container">
+            <h2 class="section-title">
+                <span class="section-number">04.</span> Proyectos académicos
+            </h2>
+            <div class="projects-grid">
+
+                <div class="project-card reveal">
+                    <div class="project-img">
+                        <img src="images/CMS1.png" alt="Sistema de Gestión de Contenido" loading="lazy">
+                        <div class="project-overlay">
+                            <div class="project-links">
+                                <a onclick="window.open('templates.html?proyecto=1', '_self')" class="proj-btn">Ver más</a>
+                                <a href="https://github.com/JaimeNVZA/CMS" target="_blank" rel="noreferrer" class="proj-btn">GitHub</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="project-info">
+                        <p class="project-type">Aplicación Web</p>
+                        <h3>Sistema de Gestión de Contenido</h3>
+                        <p class="project-desc">CMS completo con roles de usuario, permisos, SSO, generación de reportes y notificaciones por email.</p>
+                        <div class="project-tech">
+                            <span>Django</span><span>Python</span><span>PostgreSQL</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="project-card reveal">
+                    <div class="project-img">
+                        <img src="images/WB2.png" alt="Web Banking" loading="lazy">
+                        <div class="project-overlay">
+                            <div class="project-links">
+                                <a onclick="window.open('templates.html?proyecto=2', '_self')" class="proj-btn">Ver más</a>
+                                <a href="https://github.com/JaimeNVZA/Web-Banking" target="_blank" rel="noreferrer" class="proj-btn">GitHub</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="project-info">
+                        <p class="project-type">Aplicación de Escritorio</p>
+                        <h3>Web Banking</h3>
+                        <p class="project-desc">Prototipo bancario con gestión de cuentas, transferencias, pagos con tarjeta y pagos de servicios.</p>
+                        <div class="project-tech">
+                            <span>Java</span><span>JavaFX</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="project-card reveal">
+                    <div class="project-img">
+                        <img src="images/Billetera2.png" alt="Billetera Virtual" loading="lazy">
+                        <div class="project-overlay">
+                            <div class="project-links">
+                                <a onclick="window.open('templates.html?proyecto=4', '_self')" class="proj-btn">Ver más</a>
+                                <a href="https://github.com/JaimeNVZA/PerFinan" target="_blank" rel="noreferrer" class="proj-btn">GitHub</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="project-info">
+                        <p class="project-type">Aplicación de Escritorio</p>
+                        <h3>Billetera Virtual</h3>
+                        <p class="project-desc">App de finanzas personales con seguimiento de gastos, metas de ahorro y visualización de progreso.</p>
+                        <div class="project-tech">
+                            <span>Python</span><span>Tkinter</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="project-card reveal">
+                    <div class="project-img">
+                        <img src="images/Fuzzy.png" alt="Análisis Difuso de Sentimientos" loading="lazy">
+                        <div class="project-overlay">
+                            <div class="project-links">
+                                <a onclick="window.open('templates.html?proyecto=5', '_self')" class="proj-btn">Ver más</a>
+                                <a href="https://github.com/JaimeNVZA/FeelFuzzy" target="_blank" rel="noreferrer" class="proj-btn">GitHub</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="project-info">
+                        <p class="project-type">Inteligencia Artificial · PLN</p>
+                        <h3>Análisis Difuso de Sentimientos</h3>
+                        <p class="project-desc">Análisis de sentimientos con lógica difusa y PLN. Clasifica texto de archivos CSV en positivo, negativo o neutro.</p>
+                        <div class="project-tech">
+                            <span>Python</span><span>NLP</span><span>Fuzzy Logic</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="project-card reveal">
+                    <div class="project-img">
+                        <img src="images/Gestor2.png" alt="Gestor de Proyectos" loading="lazy">
+                        <div class="project-overlay">
+                            <div class="project-links">
+                                <a onclick="window.open('templates.html?proyecto=3', '_self')" class="proj-btn">Ver más</a>
+                                <a href="https://github.com/JaimeNVZA/Gestor-de-proyectos" target="_blank" rel="noreferrer" class="proj-btn">GitHub</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="project-info">
+                        <p class="project-type">Aplicación de Escritorio</p>
+                        <h3>Gestor de Proyectos</h3>
+                        <p class="project-desc">Herramienta de gestión de proyectos con énfasis en principios POO y arquitectura orientada a objetos.</p>
+                        <div class="project-tech">
+                            <span>Python</span><span>Tkinter</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="project-card reveal">
+                    <div class="project-img">
+                        <img src="images/ci/5.png" alt="Monitor de Consumo Bovino" loading="lazy">
+                        <div class="project-overlay">
+                            <div class="project-links">
+                                <a onclick="window.open('templates.html?proyecto=6', '_self')" class="proj-btn">Ver más</a>
+                                <a href="https://github.com/JaimeNVZA/SmartFeeding" target="_blank" rel="noreferrer" class="proj-btn">GitHub</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="project-info">
+                        <p class="project-type">Sistema Embebido · IoT</p>
+                        <h3>Monitor de Consumo Bovino</h3>
+                        <p class="project-desc">Sistema IoT para monitoreo del consumo de alimento bovino con sensores de peso, LCD y datos en tiempo real.</p>
+                        <div class="project-tech">
+                            <span>Arduino</span><span>Python</span>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== CONTACTO ===== -->
+    <section id="contact" class="section">
+        <div class="section-container">
+            <h2 class="section-title">
+                <span class="section-number">05.</span> Contacto
+            </h2>
+            <div class="contact-wrapper">
+                <p class="contact-intro">
+                    ¿Tienes un proyecto en mente o quieres charlar sobre tecnología?<br>
+                    Mi bandeja de entrada siempre está abierta.
+                </p>
+                <div class="contact-grid">
+                    <a href="tel:0972391492" class="contact-card reveal">
+                        <div class="contact-icon">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.55 12a19.79 19.79 0 01-3.07-8.67A2 2 0 012.48 1.25h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L6.91 9.18a16 16 0 006.05 6.05l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7a2 2 0 011.72 2.02z"/>
+                            </svg>
+                        </div>
+                        <span class="contact-label">Teléfono</span>
+                        <span class="contact-value">0972 391 492</span>
+                    </a>
+                    <a href="mailto:jaimenunezviedma@gmail.com" class="contact-card reveal">
+                        <div class="contact-icon">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/>
+                                <polyline points="22,6 12,13 2,6"/>
+                            </svg>
+                        </div>
+                        <span class="contact-label">Email</span>
+                        <span class="contact-value">jaimenunezviedma@gmail.com</span>
+                    </a>
+                    <a href="https://www.linkedin.com/in/jaime-nunez-viedma" target="_blank" rel="noreferrer" class="contact-card reveal">
+                        <div class="contact-icon">
+                            <svg viewBox="0 0 24 24" fill="currentColor">
+                                <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/>
+                            </svg>
+                        </div>
+                        <span class="contact-label">LinkedIn</span>
+                        <span class="contact-value">jaime-nunez-viedma</span>
+                    </a>
+                    <a href="https://github.com/JaimeNVZA" target="_blank" rel="noreferrer" class="contact-card reveal">
+                        <div class="contact-icon">
+                            <svg viewBox="0 0 24 24" fill="currentColor">
+                                <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/>
+                            </svg>
+                        </div>
+                        <span class="contact-label">GitHub</span>
+                        <span class="contact-value">JaimeNVZA</span>
+                    </a>
+                </div>
+                <a href="mailto:jaimenunezviedma@gmail.com" class="btn btn-primary btn-big">Enviar un mensaje</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== FLOATING CONTACT ===== -->
+    <button class="btn-contacto" id="botonContacto" aria-label="Contacto rápido">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="22" height="22">
+            <path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z"/>
+        </svg>
+    </button>
     <div class="cuadro-contacto" id="cuadroContacto">
-        <h3>Contactos</h3>
+        <h3>Contacto rápido</h3>
         <ul>
-            <li>Tel: 0972 391 492</li>
-            <li><a href="mailto:jaimenunezviedma@gmail.com">jaimenunezviedma@gmail.com</a></li>
-            <li><a href="https://www.linkedin.com/in/jaime-nunez-viedma" target="_blank">LinkedIn</a></li>
-            <li><a href="https://github.com/JaimeNVZA" target="_blank">GitHub</a></li>
+            <li>
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="14" height="14"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.55 12a19.79 19.79 0 01-3.07-8.67A2 2 0 012.48 1.25h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L6.91 9.18a16 16 0 006.05 6.05l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7a2 2 0 011.72 2.02z"/></svg>
+                0972 391 492
+            </li>
+            <li>
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="14" height="14"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+                <a href="mailto:jaimenunezviedma@gmail.com">jaimenunezviedma@gmail.com</a>
+            </li>
+            <li>
+                <svg viewBox="0 0 24 24" fill="currentColor" width="14" height="14"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+                <a href="https://www.linkedin.com/in/jaime-nunez-viedma" target="_blank" rel="noreferrer">LinkedIn</a>
+            </li>
+            <li>
+                <svg viewBox="0 0 24 24" fill="currentColor" width="14" height="14"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/></svg>
+                <a href="https://github.com/JaimeNVZA" target="_blank" rel="noreferrer">GitHub</a>
+            </li>
         </ul>
     </div>
 
+    <!-- ===== FOOTER ===== -->
     <footer>
-        <p>&copy; 2024 Jaime Núñez Viedma. Todos los derechos reservados.</p>
+        <div class="footer-inner">
+            <span class="footer-logo">JNV</span>
+            <p>&copy; 2025 Jaime Núñez Viedma. Todos los derechos reservados.</p>
+            <div class="footer-links">
+                <a href="https://github.com/JaimeNVZA" target="_blank" rel="noreferrer">GitHub</a>
+                <a href="https://www.linkedin.com/in/jaime-nunez-viedma" target="_blank" rel="noreferrer">LinkedIn</a>
+            </div>
+        </div>
     </footer>
 
     <script src="utils.js"></script>
-    
+    <script src="main.js"></script>
 </body>
 </html>

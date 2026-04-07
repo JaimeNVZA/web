@@ -1,459 +1,739 @@
-<!-- templates.html -->
-<link rel="stylesheet" href="estilos.css">
-<div id="contenido-proyecto">
-</div>
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Proyecto | Jaime Núñez Viedma</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="estilos.css">
+    <style>
+        /* ===== PROJECT PAGE SPECIFIC ===== */
+        .proj-page-nav {
+            position: fixed;
+            top: 0; left: 0; right: 0;
+            height: var(--nav-h);
+            z-index: 999;
+            backdrop-filter: blur(14px);
+            -webkit-backdrop-filter: blur(14px);
+            background: rgba(10, 25, 47, 0.92);
+            border-bottom: 1px solid var(--border);
+            display: flex;
+            align-items: center;
+        }
+        .proj-page-nav .nav-inner {
+            max-width: var(--max);
+            margin: 0 auto;
+            padding: 0 40px;
+            width: 100%;
+            display: flex;
+            align-items: center;
+            gap: 20px;
+        }
+        .proj-page-nav .nav-logo {
+            font-size: 1.35rem;
+            font-weight: 800;
+            color: var(--accent);
+            letter-spacing: 3px;
+            margin-right: auto;
+            text-decoration: none;
+        }
+        .back-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            color: var(--accent);
+            border: 1px solid var(--accent);
+            padding: 8px 20px;
+            border-radius: 5px;
+            font-size: 0.82rem;
+            font-weight: 500;
+            font-family: var(--font);
+            transition: var(--t);
+            background: transparent;
+            cursor: pointer;
+            text-decoration: none;
+        }
+        .back-btn:hover {
+            background: var(--accent-dim);
+            transform: translateX(-3px);
+        }
+        .back-btn svg { flex-shrink: 0; }
 
-<!-- Proyecto 1 -->
-<template id="template-proyecto1">
-    <div class="proyectos">
-        <header>
-            <h1>Sistema de Gestión CMS</h1>
-            <p>Página Web | Sistema CMS</p>
-            <nav class="project1">
-                <ul>
-                    <li><a href="./index.html">Vovler a Inicio</a></li>
-                </ul>
-            </nav>
-        </header>
+        /* ===== PROJECT HERO ===== */
+        .proj-hero {
+            padding-top: calc(var(--nav-h) + 60px);
+            padding-bottom: 60px;
+            padding-left: 40px;
+            padding-right: 40px;
+            text-align: center;
+            background: var(--bg);
+            position: relative;
+            overflow: hidden;
+        }
+        .proj-hero::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: radial-gradient(ellipse 70% 60% at 50% 0%, rgba(100,255,218,0.06) 0%, transparent 70%);
+            pointer-events: none;
+        }
+        .proj-hero-tag {
+            display: inline-block;
+            color: var(--accent);
+            font-size: 0.78rem;
+            font-weight: 500;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            margin-bottom: 14px;
+            font-family: monospace;
+        }
+        .proj-hero h1 {
+            font-size: clamp(1.8rem, 4vw, 3rem);
+            font-weight: 800;
+            color: var(--text-1);
+            margin-bottom: 10px;
+        }
+        .proj-hero p.subtitle {
+            color: var(--text-3);
+            font-size: 0.95rem;
+            max-width: 560px;
+            margin: 0 auto;
+        }
 
-        <section id="imagenes">
-            <h2>Imágenes</h2>
-            <div class="galeria">
-                <img id="imagenActual" class="imagen-actual" src="./images/cms/2.png" alt="Imagen Actual">
-                <a id="botonAnterior" class="btn">&lt</a>    
-                <ul id="listaImagenes" style="display: none;">
-                    <li><img src="./images/cms/2.png" alt="CMS1"></li>
-                    <li><img src="./images/cms/3.2.png" alt="CMS1"></li>
-                    <li><img src="./images/cms/4.2.png" alt="CMS1"></li>
-                    <li><img src="./images/cms/4.3.png" alt="CMS1"></li>
-                    <li><img src="./images/cms/5.png" alt="CMS1"></li>
-                    <li><img src="./images/cms/5.2.png" alt="CMS1"></li>
-                    <li><img src="./images/cms/5.3.png" alt="CMS1"></li>
-                    <li><img src="./images/cms/6.png" alt="CMS1"></li>
-                    <li><img src="./images/cms/7.png" alt="CMS1"></li>
-                    <li><img src="./images/cms/8.png" alt="CMS1"></li>
-                    <li><img src="./images/cms/9.png" alt="CMS1"></li>
-                    <li><img src="./images/cms/10.png" alt="CMS1"></li>
-                    <li><img src="./images/cms/11.png" alt="CMS1"></li>
-                    <li><img src="./images/cms/12.png" alt="CMS1"></li>
-                    <li><img src="./images/cms/13.png" alt="CMS1"></li>
-                    <li><img src="./images/cms/14.png" alt="CMS1"></li>
-                    <li><img src="./images/cms/15.png" alt="CMS1"></li>
-                </ul>                
-                <a id="botonSiguiente" class="btn">&gt</a>
+        /* ===== PROJECT SECTIONS ===== */
+        .proj-section {
+            max-width: var(--max);
+            margin: 0 auto 50px;
+            padding: 0 40px;
+        }
+        .proj-section-title {
+            font-size: 1.1rem;
+            font-weight: 700;
+            color: var(--accent);
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+            margin-bottom: 24px;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            font-family: monospace;
+        }
+        .proj-section-title::after {
+            content: '';
+            flex: 1;
+            height: 1px;
+            background: var(--border-soft);
+        }
+
+        /* ===== GALLERY ===== */
+        .proj-gallery {
+            background: var(--bg-alt);
+            border: 1px solid var(--border-soft);
+            border-radius: var(--radius);
+            padding: 30px;
+            text-align: center;
+        }
+        .imagen-actual {
+            max-width: 100%;
+            max-height: 500px;
+            width: auto;
+            height: auto;
+            border-radius: 8px;
+            display: block;
+            margin: 0 auto 20px;
+            box-shadow: 0 8px 30px rgba(2,12,27,0.6);
+        }
+        .gallery-controls {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 16px;
+            margin-top: 16px;
+        }
+        .gallery-btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            background: transparent;
+            color: var(--accent);
+            border: 1px solid var(--accent);
+            border-radius: 6px;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: var(--t);
+            text-decoration: none;
+            user-select: none;
+        }
+        .gallery-btn:hover { background: var(--accent-dim); }
+
+        /* ===== TECHNOLOGIES ===== */
+        .proj-tech-icons {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+            padding: 28px;
+            background: var(--bg-alt);
+            border: 1px solid var(--border-soft);
+            border-radius: var(--radius);
+        }
+        .proj-tech-icons a {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 8px;
+            padding: 16px;
+            border-radius: 8px;
+            border: 1px solid var(--border-soft);
+            transition: var(--t);
+            min-width: 80px;
+        }
+        .proj-tech-icons a:hover {
+            border-color: var(--accent);
+            background: var(--accent-dim);
+            transform: translateY(-4px);
+        }
+        .proj-tech-icons img {
+            width: 48px;
+            height: 48px;
+            object-fit: contain;
+        }
+
+        /* ===== DESCRIPTION ===== */
+        .proj-description {
+            background: var(--bg-alt);
+            border: 1px solid var(--border-soft);
+            border-radius: var(--radius);
+            padding: 32px;
+        }
+        .proj-description p {
+            color: var(--text-3);
+            font-size: 0.95rem;
+            line-height: 1.85;
+            margin-bottom: 16px;
+        }
+        .proj-description p:last-child { margin-bottom: 0; }
+        .proj-description strong { color: var(--text-2); font-weight: 600; }
+
+        /* ===== CODE LINK ===== */
+        .proj-code-box {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+            background: var(--bg-alt);
+            border: 1px solid var(--border-soft);
+            border-radius: var(--radius);
+            padding: 28px 32px;
+        }
+        .proj-code-box svg { color: var(--accent); flex-shrink: 0; }
+        .proj-code-box p {
+            color: var(--text-3);
+            font-size: 0.88rem;
+            margin: 0;
+            flex: 1;
+        }
+
+        /* ===== PROJECT FOOTER ===== */
+        .proj-footer-wrap {
+            max-width: var(--max);
+            margin: 60px auto 0;
+            padding: 0 40px 40px;
+        }
+
+        @media (max-width: 768px) {
+            .proj-hero, .proj-section, .proj-footer-wrap { padding-left: 20px; padding-right: 20px; }
+            .proj-page-nav .nav-inner { padding: 0 20px; }
+            .proj-tech-icons a { min-width: 60px; padding: 10px; }
+            .proj-tech-icons img { width: 38px; height: 38px; }
+            .proj-code-box { flex-direction: column; text-align: center; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- NAV -->
+    <nav class="proj-page-nav">
+        <div class="nav-inner">
+            <a href="./index.html" class="nav-logo">JNV</a>
+            <a href="./index.html#projects" class="back-btn">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="15" height="15">
+                    <path d="M19 12H5M12 5l-7 7 7 7"/>
+                </svg>
+                Volver al inicio
+            </a>
+        </div>
+    </nav>
+
+    <!-- CONTENT INJECTED HERE BY templates.js -->
+    <div id="contenido-proyecto"></div>
+
+
+    <!-- ====================================================
+         TEMPLATE: Proyecto 1 — CMS
+         ==================================================== -->
+    <template id="template-proyecto1">
+        <div class="proj-page">
+            <div class="proj-hero">
+                <span class="proj-hero-tag">Aplicación Web · CMS</span>
+                <h1>Sistema de Gestión de Contenido</h1>
+                <p class="subtitle">Plataforma web de creación y gestión de contenidos con roles, permisos y SSO.</p>
             </div>
-            <script src="galeria.js"></script>
-        </section>
 
-        <section id="tecnologias">
-            <h2>Tecnologías</h2>
-            <div class="lenguajes">
-                <a href="https://www.djangoproject.com/" target="_blank" rel="noreferrer"> <img src="https://cdn.worldvectorlogo.com/logos/django.svg" alt="django" width=80" height=80"/> </a>
-                <a href="https://www.w3.org/html/" target="_blank" rel="noreferrer"> <img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/html5/html5-original-wordmark.svg" alt="html5" width=80" height=80"/> </a>
-                <a href="https://www.w3schools.com/css/" target="_blank" rel="noreferrer"> <img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/css3/css3-original-wordmark.svg" alt="css3" width=80" height=80"/> </a>
-                <a href="https://www.python.org" target="_blank" rel="noreferrer"> <img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/python/python-original.svg" alt="python" width=80" height=80"/> </a>
-                <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript" target="_blank" rel="noreferrer"> <img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/javascript/javascript-original.svg" alt="javascript" width=80" height=80"/> </a>
-                <a href="https://getbootstrap.com" target="_blank" rel="noreferrer"> <img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/bootstrap/bootstrap-plain-wordmark.svg" alt="bootstrap" width=80" height=80"/> </a>
-                <a href="https://www.postgresql.org" target="_blank" rel="noreferrer"> <img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/postgresql/postgresql-original-wordmark.svg" alt="postgresql" width=80" height=80"/> </a>
-                <a href="https://www.nginx.com" target="_blank" rel="noreferrer"> <img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/nginx/nginx-original.svg" alt="nginx" width=80" height=80"/> </a>
-                <a href="https://lucene.apache.org/solr/" target="_blank" rel="noreferrer"> <img src="https://www.vectorlogo.zone/logos/apache_solr/apache_solr-icon.svg" alt="solr" width=80" height=80"/> </a>
-            </div>    
-        </section>
-
-        <section id="funcionamiento">
-            <h2>Funcionamiento</h2>
-            <p>La página web es de creación de blogs y contenidos, con las capacidades mínimas que 
-                demuestran un CMS funcional, donde un usuario crea contenidos con texto e imágenes 
-                y otros usuarios pueden ver, comentar, calificar y otras cosas más, y los moderadores 
-                podrán modificar el contenido, o inactivarlo en caso de incumplimiento de normas.
-                Además de contenidos los usuarios con roles superiores pueden realizar más acciones como por 
-                ejemplo crear categorías o plantillas.
-                El sistema es capaz de gestionar usuarios, contenidos, categorías, subcategorías, plantillas, 
-                roles y permisos. 
-                También cuenta con login SSO, base de datos, historial, generación de reportes y notificaciones a email.
-            </p>
-            <p><strong>El proyecto fue realizado en conjunto de 4 personas, cuenta con documentación.</strong></p>
-        </section>
-
-        <section id="verCodigo">
-            <h2>Revisar código</h2>
-            <a href="https://github.com/JaimeNVZA/CMS" class="btn">Ver en GitHub</a>
-        </section>
-    </div>
-</template>
-
-
-<!-- Proyecto 2 -->
-<template id="template-proyecto2">
-    <div class="proyectos">
-        <header>
-            <h1>Web Banking</h1>
-            <p>Aplicación de escritorio</p>
-            <nav class="project1">
-                <ul>
-                    <li><a href="./index.html">Vovler a Inicio</a></li>
-                </ul>
-            </nav>
-        </header>
-
-        <section id="imagenes">
-            <h2>Imágenes</h2>
-            <div class="galeria">
-                <img id="imagenActual" class="imagen-actual" src="./images/wb/1.png" alt="Imagen Actual">
-                <a id="botonAnterior" class="btn">&lt</a>    
-                <ul id="listaImagenes" style="display: none;">
-                    <li><img src="./images/wb/1.png" alt="CMS1"></li>
-                    <li><img src="./images/wb/2.png" alt="CMS1"></li>
-                    <li><img src="./images/wb/3.png" alt="CMS1"></li>
-                    <li><img src="./images/wb/4.png" alt="CMS1"></li>
-                    <li><img src="./images/wb/5.png" alt="CMS1"></li>
-                    <li><img src="./images/wb/6.png" alt="CMS1"></li>
-                    <li><img src="./images/wb/7.png" alt="CMS1"></li>
-                </ul>                
-                <a id="botonSiguiente" class="btn">&gt</a>
+            <div class="proj-section">
+                <h2 class="proj-section-title">Imágenes</h2>
+                <div class="proj-gallery">
+                    <img id="imagenActual" class="imagen-actual" src="./images/cms/2.png" alt="CMS">
+                    <ul id="listaImagenes" style="display:none;">
+                        <li><img src="./images/cms/2.png"   alt=""></li>
+                        <li><img src="./images/cms/3.2.png" alt=""></li>
+                        <li><img src="./images/cms/4.2.png" alt=""></li>
+                        <li><img src="./images/cms/4.3.png" alt=""></li>
+                        <li><img src="./images/cms/5.png"   alt=""></li>
+                        <li><img src="./images/cms/5.2.png" alt=""></li>
+                        <li><img src="./images/cms/5.3.png" alt=""></li>
+                        <li><img src="./images/cms/6.png"   alt=""></li>
+                        <li><img src="./images/cms/7.png"   alt=""></li>
+                        <li><img src="./images/cms/8.png"   alt=""></li>
+                        <li><img src="./images/cms/9.png"   alt=""></li>
+                        <li><img src="./images/cms/10.png"  alt=""></li>
+                        <li><img src="./images/cms/11.png"  alt=""></li>
+                        <li><img src="./images/cms/12.png"  alt=""></li>
+                        <li><img src="./images/cms/13.png"  alt=""></li>
+                        <li><img src="./images/cms/14.png"  alt=""></li>
+                        <li><img src="./images/cms/15.png"  alt=""></li>
+                    </ul>
+                    <div class="gallery-controls">
+                        <a id="botonAnterior" class="gallery-btn">&#8592;</a>
+                        <a id="botonSiguiente" class="gallery-btn">&#8594;</a>
+                    </div>
+                </div>
+                <script src="galeria.js"></script>
             </div>
-            <script src="galeria.js"></script>
-        </section>
 
-        <section id="tecnologias">
-            <h2>Tecnologías</h2>
-            <div class="lenguajes">
-                <a href="https://www.java.com" target="_blank" rel="noreferrer"> <img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/java/java-original.svg" alt="java" width="40" height="40"/> </a> 
-                <a href="https://openjfx.io/" target="_blank" rel="noreferrer"> <img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/java/java-original.svg" alt="java" width="40" height="40"/> </a> 
-            </div>    
-        </section>
-
-        <section id="funcionamiento">
-            <h2>Funcionamiento</h2>
-            <p>
-                El proyecto consiste en un prototipo de Web Banking desarrollado íntegramente en Java. 
-                Este sistema almacena los datos de forma simulada mediante una base de datos implementada con arreglos. 
-                La interfaz gráfica está diseñada utilizando JavaFX.
-            </p>
-            <p>
-                El prototipo incluye funcionalidades esenciales orientadas a la demostración, tales como la gestión de cuentas, 
-                transferencias, pago de tarjetas y servicios. Se trata de un modelo básico cuyo objetivo principal es explorar 
-                el uso de Java como herramienta para la implementación de una plataforma de banca en línea.
-            </p>
-        </section>
-
-        <section id="verCodigo">
-            <h2>Revisar código</h2>
-            <a href="https://github.com/JaimeNVZA/Web-Banking" class="btn">Ver en GitHub</a>
-        </section>
-    </div>
-</template>
-
-
-<!-- Proyecto 3 -->
-<template id="template-proyecto3">
-    <div class="proyectos">
-        <header>
-            <h1>Administrador de proyectos</h1>
-            <p>Aplicación de escritorio</p>
-            <nav class="project1">
-                <ul>
-                    <li><a href="./index.html">Vovler a Inicio</a></li>
-                </ul>
-            </nav>
-        </header>
-
-        <section id="imagenes">
-            <h2>Imágenes</h2>
-            <div class="galeria">
-                <img id="imagenActual" class="imagen-actual" src="./images/gp/1.png" alt="Imagen Actual">
-                <a id="botonAnterior" class="btn">&lt</a>    
-                <ul id="listaImagenes" style="display: none;">
-                    <li><img src="./images/gp/1.png" alt="CMS1"></li>
-                    <li><img src="./images/gp/2.png" alt="CMS1"></li>
-                    <li><img src="./images/gp/3.png" alt="CMS1"></li>
-                    <li><img src="./images/gp/4.png" alt="CMS1"></li>
-                    <li><img src="./images/gp/5.png" alt="CMS1"></li>
-                    <li><img src="./images/gp/6.png" alt="CMS1"></li>
-                    <li><img src="./images/gp/7.png" alt="CMS1"></li>
-                    <li><img src="./images/gp/8.png" alt="CMS1"></li>
-                    <li><img src="./images/gp/9.png" alt="CMS1"></li>
-                    <li><img src="./images/gp/10.png" alt="CMS1"></li>
-                    <li><img src="./images/gp/11.png" alt="CMS1"></li>
-                    <li><img src="./images/gp/12.png" alt="CMS1"></li>
-                    <li><img src="./images/gp/13.png" alt="CMS1"></li>
-                </ul>                
-                <a id="botonSiguiente" class="btn">&gt</a>
+            <div class="proj-section">
+                <h2 class="proj-section-title">Tecnologías</h2>
+                <div class="proj-tech-icons">
+                    <a href="https://www.djangoproject.com/" target="_blank" rel="noreferrer">
+                        <img src="https://cdn.worldvectorlogo.com/logos/django.svg" alt="Django"/>
+                        <span style="font-size:0.72rem;color:var(--text-3);">Django</span>
+                    </a>
+                    <a href="https://www.python.org" target="_blank" rel="noreferrer">
+                        <img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/python/python-original.svg" alt="Python"/>
+                        <span style="font-size:0.72rem;color:var(--text-3);">Python</span>
+                    </a>
+                    <a href="https://www.postgresql.org" target="_blank" rel="noreferrer">
+                        <img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/postgresql/postgresql-original-wordmark.svg" alt="PostgreSQL"/>
+                        <span style="font-size:0.72rem;color:var(--text-3);">PostgreSQL</span>
+                    </a>
+                    <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript" target="_blank" rel="noreferrer">
+                        <img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/javascript/javascript-original.svg" alt="JavaScript"/>
+                        <span style="font-size:0.72rem;color:var(--text-3);">JavaScript</span>
+                    </a>
+                    <a href="https://getbootstrap.com" target="_blank" rel="noreferrer">
+                        <img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/bootstrap/bootstrap-plain-wordmark.svg" alt="Bootstrap"/>
+                        <span style="font-size:0.72rem;color:var(--text-3);">Bootstrap</span>
+                    </a>
+                    <a href="https://www.nginx.com" target="_blank" rel="noreferrer">
+                        <img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/nginx/nginx-original.svg" alt="Nginx"/>
+                        <span style="font-size:0.72rem;color:var(--text-3);">Nginx</span>
+                    </a>
+                </div>
             </div>
-            <script src="galeria.js"></script>
-        </section>
 
-        <section id="tecnologias">
-            <h2>Tecnologías</h2>
-            <div class="lenguajes">
-                <a href="https://www.python.org" target="_blank" rel="noreferrer"> <img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/python/python-original.svg" alt="python" width="40" height="40"/> </a> 
-                <a href="https://docs.python.org/3/library/tkinter.html" target="_blank" rel="noreferrer"> <img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/python/python-original.svg" alt="python" width="40" height="40"/> </a> 
-            </div>    
-        </section>
-
-        <section id="funcionamiento">
-            <h2>Funcionamiento</h2>
-            <p>
-                Este proyecto consiste en un administrador o gestor de proyectos, basado en una metodología de administración 
-                estructurada que busca facilitar la planificación, organización y seguimiento de tareas. Este tipo de herramientas 
-                es ampliamente utilizado para coordinar equipos, optimizar recursos y cumplir con los objetivos dentro de los 
-                plazos establecidos, promoviendo una gestión más eficiente y colaborativa.
-            </p>
-            <p>
-                La interfaz gráfica fue diseñada con la librería tkinter de python y aunque es poco intuitiva en su estado actual, 
-                el objetivo principal de este programa es servir 
-                como una práctica para trabajar con los principios de la programación orientada a objetos (POO). Esto incluye el diseño 
-                de clases, la implementación de herencia, encapsulación, y polimorfismo, así como la interacción entre objetos para 
-                simular procesos reales de gestión de proyectos.
-            </p>
-        </section>
-
-        <section id="verCodigo">
-            <h2>Revisar código</h2>
-            <a href="https://github.com/JaimeNVZA/Gestor-de-proyectos" class="btn">Ver en GitHub</a>
-        </section>
-    </div>
-</template>
-
-
-<!-- Proyecto 4 -->
-
-<template id="template-proyecto4">
-    <div class="proyectos">
-        <header>
-            <h1>Billetera</h1>
-            <p>Aplicación de escritorio</p>
-            <nav class="project1">
-                <ul>
-                    <li><a href="./index.html">Vovler a Inicio</a></li>
-                </ul>
-            </nav>
-        </header>
-
-        <section id="imagenes">
-            <h2>Imágenes</h2>
-            <div class="galeria">
-                <img id="imagenActual" class="imagen-actual" src="./images/bt/1.png" alt="Imagen Actual">
-                <a id="botonAnterior" class="btn">&lt</a>    
-                <ul id="listaImagenes" style="display: none;">
-                    <li><img src="./images/bt/1.png" alt="CMS1"></li>
-                    <li><img src="./images/bt/2.png" alt="CMS1"></li>
-                    <li><img src="./images/bt/3.png" alt="CMS1"></li>
-                    <li><img src="./images/bt/4.png" alt="CMS1"></li>
-                    <li><img src="./images/bt/5.png" alt="CMS1"></li>
-                    <li><img src="./images/bt/6.png" alt="CMS1"></li>
-                    <li><img src="./images/bt/7.png" alt="CMS1"></li>
-                    <li><img src="./images/bt/8.png" alt="CMS1"></li>
-                    <li><img src="./images/bt/9.png" alt="CMS1"></li>
-                </ul>                
-                <a id="botonSiguiente" class="btn">&gt</a>
+            <div class="proj-section">
+                <h2 class="proj-section-title">Descripción</h2>
+                <div class="proj-description">
+                    <p>Plataforma web de creación de blogs y contenidos que demuestra las capacidades mínimas de un CMS funcional. Los usuarios pueden crear contenidos con texto e imágenes; otros pueden ver, comentar y calificar; y los moderadores pueden modificar o inactivar contenido.</p>
+                    <p>El sistema gestiona usuarios, contenidos, categorías, subcategorías, plantillas, roles y permisos. También cuenta con <strong>login SSO</strong>, base de datos, historial de cambios, generación de reportes y notificaciones por email.</p>
+                    <p><strong>Proyecto grupal de 4 personas · Incluye documentación completa.</strong></p>
+                </div>
             </div>
-            <script src="galeria.js"></script>
-        </section>
 
-        <section id="tecnologias">
-            <h2>Tecnologías</h2>
-            <div class="lenguajes">
-                <a href="https://www.python.org" target="_blank" rel="noreferrer"> <img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/python/python-original.svg" alt="python" width="40" height="40"/> </a> 
-                <a href="https://docs.python.org/3/library/tkinter.html" target="_blank" rel="noreferrer"> <img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/python/python-original.svg" alt="python" width="40" height="40"/> </a> 
-            </div>    
-        </section>
-
-        <section id="funcionamiento">
-            <h2>Funcionamiento</h2>
-            <p>
-                Este proyecto se centra en el desarrollo de una aplicación de escritorio (con planes de expandirse próximamente 
-                a dispositivos móviles) diseñada para controlar y fomentar los ahorros personales a través del registro y análisis 
-                de los gastos, tanto fijos como superfluos. La idea principal es proporcionar a los usuarios una herramienta 
-                práctica y visual que les ayude a alcanzar sus metas financieras de manera efectiva.
-            </p>
-            <p>
-                La aplicación permite a los usuarios registrar sus metas de ahorro a corto, mediano y largo plazo, junto con sus 
-                gastos diarios. Estos se clasifican en fijos (necesarios) y superfluos (opcionales). Una de las características clave 
-                de la app es su capacidad para mostrar el progreso de los ahorros mediante una representación gráfica en forma de "carrera". 
-                En esta visualización, los objetivos más cercanos a alcanzarse aparecen en primer lugar, incentivando al usuario a mantener 
-                el hábito de ahorrar.
-            </p>
-            <p>
-            <strong>
-                Este proyecto se encuentra en una etapa inicial, por lo que las funcionalidades así como la interfaz aún no se encuentran
-                culminadas.
-            </strong>
-            </p>
-        </section>
-
-        <section id="verCodigo">
-            <h2>Revisar código</h2>
-            <a href="https://github.com/JaimeNVZA/PerFinan" class="btn">Ver en GitHub</a>
-        </section>
-    </div>
-</template>
-
-
-<!-- Proyecto 5 -->
-
-<template id="template-proyecto5">
-    <div class="proyectos">
-        <header>
-            <h1>Análisis Difuso de Sentimientos</h1>
-            <p>Aplicación de escritorio</p>
-            <nav class="project1">
-                <ul>
-                    <li><a href="./index.html">Vovler a Inicio</a></li>
-                </ul>
-            </nav>
-        </header>
-
-        <section id="imagenes">
-            <h2>Imágenes</h2>
-            <div class="galeria">
-                <img id="imagenActual" class="imagen-actual" src="./images/ff/1.png" alt="Imagen Actual">
-                <a id="botonAnterior" class="btn">&lt</a>    
-                <ul id="listaImagenes" style="display: none;">
-                    <li><img src="./images/ff/1.png" alt="CMS1"></li>
-                </ul>                
-                <a id="botonSiguiente" class="btn">&gt</a>
+            <div class="proj-section">
+                <h2 class="proj-section-title">Código fuente</h2>
+                <div class="proj-code-box">
+                    <svg viewBox="0 0 24 24" fill="currentColor" width="28" height="28"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/></svg>
+                    <p>Repositorio disponible en GitHub con el código fuente completo del proyecto.</p>
+                    <a href="https://github.com/JaimeNVZA/CMS" target="_blank" rel="noreferrer" class="btn btn-primary">Ver en GitHub</a>
+                </div>
             </div>
-            <script src="galeria.js"></script>
-        </section>
-
-        <section id="tecnologias">
-            <h2>Tecnologías</h2>
-            <div class="lenguajes">
-                <a href="https://www.python.org" target="_blank" rel="noreferrer"> <img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/python/python-original.svg" alt="python" width="40" height="40"/> </a> 
-                <a href="https://docs.python.org/3/library/tkinter.html" target="_blank" rel="noreferrer"> <img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/python/python-original.svg" alt="python" width="40" height="40"/> </a> 
-            </div>    
-        </section>
-
-        <section id="funcionamiento">
-            <h2>Funcionamiento</h2>
-            <p>
-                Este programa lo hice para analizar sentimientos en textos usando lógica difusa. La idea es que puedas cargar un archivo CSV 
-                con frases o comentarios, y el programa te dice si cada texto es positivo, negativo o neutro. Todo esto lo muestra en una 
-                tabla fácil de entender.
-            </p>
-            <p>
-                Primero, limpio el texto para quitar palabras irrelevantes, como "el", "y", "de", etc., usando técnicas de procesamiento de 
-                lenguaje natural. Luego, aplico análisis de sentimientos con VaderSentiment para sacar puntajes positivos y negativos. Después, 
-                con lógica difusa, evalúo esos puntajes y obtengo un resultado más preciso, que es el sentimiento final.
-            </p>
-            <p>
-            <strong>
-                ¿Para qué sirve?
-                <br>
-            </strong>
-                Si necesitas analizar opiniones de clientes, comentarios en redes sociales o cualquier tipo de texto y no quieres complicarte con 
-                procesos manuales, este programa te ahorra mucho tiempo. También es útil para proyectos académicos o análisis de datos sentimentales.
-            </p>
-        </section>
-
-        <section id="verCodigo">
-            <h2>Revisar código</h2>
-            <a href="https://github.com/JaimeNVZA/FeelFuzzy" class="btn">Ver en GitHub</a>
-        </section>
-    </div>
-</template>
+        </div>
+    </template>
 
 
-<!-- Proyecto 6 -->
-
-<template id="template-proyecto6">
-    <div class="proyectos">
-        <header>
-            <h1>Monitor de Consumo Bovino</h1>
-            <p>Sistema digital</p>
-            <nav class="project1">
-                <ul>
-                    <li><a href="./index.html">Vovler a Inicio</a></li>
-                </ul>
-            </nav>
-        </header>
-
-        <section id="imagenes">
-            <h2>Imágenes</h2>
-            <div class="galeria">
-                <img id="imagenActual" class="imagen-actual" src="./images/ci/1.2.jpg" alt="Imagen Actual">
-                <a id="botonAnterior" class="btn">&lt</a>    
-                <ul id="listaImagenes" style="display: none;">
-                    <li><img src="./images/ci/1.2.jpg" alt="CMS1"></li>
-                    <li><img src="./images/ci/6.png" alt="CMS1"></li>
-                    <li><img src="./images/ci/7.png" alt="CMS1"></li>
-                    <li><img src="./images/ci/3.png" alt="CMS1"></li>
-                </ul>   
-                <a id="botonSiguiente" class="btn">&gt</a>
+    <!-- ====================================================
+         TEMPLATE: Proyecto 2 — Web Banking
+         ==================================================== -->
+    <template id="template-proyecto2">
+        <div class="proj-page">
+            <div class="proj-hero">
+                <span class="proj-hero-tag">Aplicación de Escritorio · Java</span>
+                <h1>Web Banking</h1>
+                <p class="subtitle">Prototipo de banca en línea con gestión de cuentas, transferencias y pagos.</p>
             </div>
-            <script src="galeria.js"></script>
-        </section>
 
-        <section id="tecnologias">
-            <h2>Tecnologías</h2>
-            <div class="lenguajes">
-                <p><img src="https://cdn.worldvectorlogo.com/logos/arduino-1.svg" alt="arduino" width="40" height="40"/></p>
-                <p><img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/python/python-original.svg" alt="python" width=40" height=40"/></p>
-            </div>    
-        </section>
+            <div class="proj-section">
+                <h2 class="proj-section-title">Imágenes</h2>
+                <div class="proj-gallery">
+                    <img id="imagenActual" class="imagen-actual" src="./images/wb/1.png" alt="Web Banking">
+                    <ul id="listaImagenes" style="display:none;">
+                        <li><img src="./images/wb/1.png" alt=""></li>
+                        <li><img src="./images/wb/2.png" alt=""></li>
+                        <li><img src="./images/wb/3.png" alt=""></li>
+                        <li><img src="./images/wb/4.png" alt=""></li>
+                        <li><img src="./images/wb/5.png" alt=""></li>
+                        <li><img src="./images/wb/6.png" alt=""></li>
+                        <li><img src="./images/wb/7.png" alt=""></li>
+                    </ul>
+                    <div class="gallery-controls">
+                        <a id="botonAnterior" class="gallery-btn">&#8592;</a>
+                        <a id="botonSiguiente" class="gallery-btn">&#8594;</a>
+                    </div>
+                </div>
+                <script src="galeria.js"></script>
+            </div>
 
-        <section id="funcionamiento">
-            <h2>Funcionamiento</h2>
-            <p>
-                Este es un prototipo que tiene como objetivo principal medir y registrar el consumo de alimento de los bovinos.
-                <p><strong>¿Cómo funciona?</strong></p>
-                <strong>Medición del consumo:</strong>
-                A través de un sensor de peso, el sistema registra la cantidad de alimento que se coloca en el comedero y cuánto de este es consumido 
-                por los bovinos. Esto permite tener un registro exacto del consumo real.
-            </p>
-            <p>
-                <strong>Monitoreo continuo:</strong>
-                El sistema se asegura de mantener información actualizada sobre el peso del alimento disponible en el comedero. Si los bovinos comen, 
-                se detecta la diferencia en el peso.
-            </p>
-            <p>
-                <strong>Visualización en tiempo real:</strong>
-                Una pantalla LCD muestra el peso del alimento en tiempo real, brindando información clara al encargado del manejo del ganado.
-            </p>
-            <p><strong>Envío de datos:</strong>
-                Los datos recolectados son enviados a un sistema central para ser analizados, permitiendo al productor tomar decisiones basadas 
-                en el comportamiento alimenticio de los animales.
-            </p>
-        </section>
+            <div class="proj-section">
+                <h2 class="proj-section-title">Tecnologías</h2>
+                <div class="proj-tech-icons">
+                    <a href="https://www.java.com" target="_blank" rel="noreferrer">
+                        <img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/java/java-original.svg" alt="Java"/>
+                        <span style="font-size:0.72rem;color:var(--text-3);">Java</span>
+                    </a>
+                    <a href="https://openjfx.io/" target="_blank" rel="noreferrer">
+                        <img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/java/java-original.svg" alt="JavaFX"/>
+                        <span style="font-size:0.72rem;color:var(--text-3);">JavaFX</span>
+                    </a>
+                </div>
+            </div>
 
-        <section id="verCodigo">
-            <h2>Revisar código</h2>
-            <a href="https://github.com/JaimeNVZA/SmartFeeding" class="btn">Ver en GitHub</a>
-        </section>
-    </div>
-</template>
+            <div class="proj-section">
+                <h2 class="proj-section-title">Descripción</h2>
+                <div class="proj-description">
+                    <p>Prototipo de Web Banking desarrollado íntegramente en Java. Los datos se almacenan de forma simulada mediante arreglos, y la interfaz gráfica está construida con <strong>JavaFX</strong>.</p>
+                    <p>Incluye funcionalidades esenciales como gestión de cuentas, transferencias, pago de tarjetas y pago de servicios. El objetivo fue explorar Java como herramienta para implementar una plataforma de banca en línea.</p>
+                </div>
+            </div>
+
+            <div class="proj-section">
+                <h2 class="proj-section-title">Código fuente</h2>
+                <div class="proj-code-box">
+                    <svg viewBox="0 0 24 24" fill="currentColor" width="28" height="28"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/></svg>
+                    <p>Repositorio disponible en GitHub con el código fuente completo del proyecto.</p>
+                    <a href="https://github.com/JaimeNVZA/Web-Banking" target="_blank" rel="noreferrer" class="btn btn-primary">Ver en GitHub</a>
+                </div>
+            </div>
+        </div>
+    </template>
 
 
-<!-- Contactos -->
-<div class="proyectos">
-    <section id="contact">
-        <h2>Contacto</h2>
-        <p>Puedes contactarme a través de los siguientes:</p>
-        <ul>
-            <li>Tel: 0972 391 492</li>
-            <li><a href="mailto:jaimenunezviedma@gmail.com">jaimenunezviedma@gmail.com</a></li>
-            <li><a href="https://www.linkedin.com/in/jaime-nunez-viedma" target="_blank">LinkedIn</a></li>
-            <li><a href="https://github.com/JaimeNVZA" target="_blank">GitHub</a></li>
-        </ul>
-    </section>
+    <!-- ====================================================
+         TEMPLATE: Proyecto 3 — Gestor de Proyectos
+         ==================================================== -->
+    <template id="template-proyecto3">
+        <div class="proj-page">
+            <div class="proj-hero">
+                <span class="proj-hero-tag">Aplicación de Escritorio · Python</span>
+                <h1>Gestor de Proyectos</h1>
+                <p class="subtitle">Herramienta de planificación y seguimiento de tareas basada en principios POO.</p>
+            </div>
 
-    <!-- Botón de contacto flotante -->
-    <button class="btn-contacto" id="botonContacto">Contacto</button>
-    <div class="cuadro-contacto" id="cuadroContacto">
-        <h3>Contactos</h3>
-        <ul>
-            <li>Tel: 0972 391 492</li>
-            <li><a href="mailto:jaimenunezviedma@gmail.com">jaimenunezviedma@gmail.com</a></li>
-            <li><a href="https://www.linkedin.com/in/jaime-nunez-viedma" target="_blank">LinkedIn</a></li>
-            <li><a href="https://github.com/JaimeNVZA" target="_blank">GitHub</a></li>
-        </ul>
-    </div>
+            <div class="proj-section">
+                <h2 class="proj-section-title">Imágenes</h2>
+                <div class="proj-gallery">
+                    <img id="imagenActual" class="imagen-actual" src="./images/gp/1.png" alt="Gestor de Proyectos">
+                    <ul id="listaImagenes" style="display:none;">
+                        <li><img src="./images/gp/1.png"  alt=""></li>
+                        <li><img src="./images/gp/2.png"  alt=""></li>
+                        <li><img src="./images/gp/3.png"  alt=""></li>
+                        <li><img src="./images/gp/4.png"  alt=""></li>
+                        <li><img src="./images/gp/5.png"  alt=""></li>
+                        <li><img src="./images/gp/6.png"  alt=""></li>
+                        <li><img src="./images/gp/7.png"  alt=""></li>
+                        <li><img src="./images/gp/8.png"  alt=""></li>
+                        <li><img src="./images/gp/9.png"  alt=""></li>
+                        <li><img src="./images/gp/10.png" alt=""></li>
+                        <li><img src="./images/gp/11.png" alt=""></li>
+                        <li><img src="./images/gp/12.png" alt=""></li>
+                        <li><img src="./images/gp/13.png" alt=""></li>
+                    </ul>
+                    <div class="gallery-controls">
+                        <a id="botonAnterior" class="gallery-btn">&#8592;</a>
+                        <a id="botonSiguiente" class="gallery-btn">&#8594;</a>
+                    </div>
+                </div>
+                <script src="galeria.js"></script>
+            </div>
 
-    <footer>
-        <p>&copy; 2024 Jaime Núñez Viedma. Todos los derechos reservados.</p>
+            <div class="proj-section">
+                <h2 class="proj-section-title">Tecnologías</h2>
+                <div class="proj-tech-icons">
+                    <a href="https://www.python.org" target="_blank" rel="noreferrer">
+                        <img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/python/python-original.svg" alt="Python"/>
+                        <span style="font-size:0.72rem;color:var(--text-3);">Python</span>
+                    </a>
+                    <a href="https://docs.python.org/3/library/tkinter.html" target="_blank" rel="noreferrer">
+                        <img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/python/python-original.svg" alt="Tkinter"/>
+                        <span style="font-size:0.72rem;color:var(--text-3);">Tkinter</span>
+                    </a>
+                </div>
+            </div>
+
+            <div class="proj-section">
+                <h2 class="proj-section-title">Descripción</h2>
+                <div class="proj-description">
+                    <p>Administrador de proyectos basado en una metodología estructurada que facilita la planificación, organización y seguimiento de tareas. La interfaz gráfica fue diseñada con la librería <strong>Tkinter</strong> de Python.</p>
+                    <p>El objetivo principal es servir como práctica para los principios de la <strong>Programación Orientada a Objetos (POO)</strong>: diseño de clases, herencia, encapsulación y polimorfismo para simular procesos reales de gestión de proyectos.</p>
+                </div>
+            </div>
+
+            <div class="proj-section">
+                <h2 class="proj-section-title">Código fuente</h2>
+                <div class="proj-code-box">
+                    <svg viewBox="0 0 24 24" fill="currentColor" width="28" height="28"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/></svg>
+                    <p>Repositorio disponible en GitHub con el código fuente completo del proyecto.</p>
+                    <a href="https://github.com/JaimeNVZA/Gestor-de-proyectos" target="_blank" rel="noreferrer" class="btn btn-primary">Ver en GitHub</a>
+                </div>
+            </div>
+        </div>
+    </template>
+
+
+    <!-- ====================================================
+         TEMPLATE: Proyecto 4 — Billetera Virtual
+         ==================================================== -->
+    <template id="template-proyecto4">
+        <div class="proj-page">
+            <div class="proj-hero">
+                <span class="proj-hero-tag">Aplicación de Escritorio · Python</span>
+                <h1>Billetera Virtual</h1>
+                <p class="subtitle">App de finanzas personales con seguimiento de gastos y metas de ahorro.</p>
+            </div>
+
+            <div class="proj-section">
+                <h2 class="proj-section-title">Imágenes</h2>
+                <div class="proj-gallery">
+                    <img id="imagenActual" class="imagen-actual" src="./images/bt/1.png" alt="Billetera Virtual">
+                    <ul id="listaImagenes" style="display:none;">
+                        <li><img src="./images/bt/1.png" alt=""></li>
+                        <li><img src="./images/bt/2.png" alt=""></li>
+                        <li><img src="./images/bt/3.png" alt=""></li>
+                        <li><img src="./images/bt/4.png" alt=""></li>
+                        <li><img src="./images/bt/5.png" alt=""></li>
+                        <li><img src="./images/bt/6.png" alt=""></li>
+                        <li><img src="./images/bt/7.png" alt=""></li>
+                        <li><img src="./images/bt/8.png" alt=""></li>
+                        <li><img src="./images/bt/9.png" alt=""></li>
+                    </ul>
+                    <div class="gallery-controls">
+                        <a id="botonAnterior" class="gallery-btn">&#8592;</a>
+                        <a id="botonSiguiente" class="gallery-btn">&#8594;</a>
+                    </div>
+                </div>
+                <script src="galeria.js"></script>
+            </div>
+
+            <div class="proj-section">
+                <h2 class="proj-section-title">Tecnologías</h2>
+                <div class="proj-tech-icons">
+                    <a href="https://www.python.org" target="_blank" rel="noreferrer">
+                        <img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/python/python-original.svg" alt="Python"/>
+                        <span style="font-size:0.72rem;color:var(--text-3);">Python</span>
+                    </a>
+                    <a href="https://docs.python.org/3/library/tkinter.html" target="_blank" rel="noreferrer">
+                        <img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/python/python-original.svg" alt="Tkinter"/>
+                        <span style="font-size:0.72rem;color:var(--text-3);">Tkinter</span>
+                    </a>
+                </div>
+            </div>
+
+            <div class="proj-section">
+                <h2 class="proj-section-title">Descripción</h2>
+                <div class="proj-description">
+                    <p>Aplicación de escritorio diseñada para controlar y fomentar el ahorro personal mediante el registro y análisis de gastos fijos y superfluos.</p>
+                    <p>Permite registrar metas de ahorro a corto, mediano y largo plazo, junto con los gastos diarios. Una de sus características clave es la <strong>visualización en forma de carrera</strong>: los objetivos más cercanos a alcanzarse aparecen primero, incentivando el hábito del ahorro.</p>
+                    <p><strong>Proyecto en etapa inicial — funcionalidades e interfaz en desarrollo.</strong></p>
+                </div>
+            </div>
+
+            <div class="proj-section">
+                <h2 class="proj-section-title">Código fuente</h2>
+                <div class="proj-code-box">
+                    <svg viewBox="0 0 24 24" fill="currentColor" width="28" height="28"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/></svg>
+                    <p>Repositorio disponible en GitHub con el código fuente completo del proyecto.</p>
+                    <a href="https://github.com/JaimeNVZA/PerFinan" target="_blank" rel="noreferrer" class="btn btn-primary">Ver en GitHub</a>
+                </div>
+            </div>
+        </div>
+    </template>
+
+
+    <!-- ====================================================
+         TEMPLATE: Proyecto 5 — Análisis Difuso de Sentimientos
+         ==================================================== -->
+    <template id="template-proyecto5">
+        <div class="proj-page">
+            <div class="proj-hero">
+                <span class="proj-hero-tag">IA · PLN · Lógica Difusa</span>
+                <h1>Análisis Difuso de Sentimientos</h1>
+                <p class="subtitle">Herramienta de NLP que clasifica textos en positivo, negativo o neutro con lógica difusa.</p>
+            </div>
+
+            <div class="proj-section">
+                <h2 class="proj-section-title">Imágenes</h2>
+                <div class="proj-gallery">
+                    <img id="imagenActual" class="imagen-actual" src="./images/ff/1.png" alt="Análisis de Sentimientos">
+                    <ul id="listaImagenes" style="display:none;">
+                        <li><img src="./images/ff/1.png" alt=""></li>
+                    </ul>
+                    <div class="gallery-controls">
+                        <a id="botonAnterior" class="gallery-btn">&#8592;</a>
+                        <a id="botonSiguiente" class="gallery-btn">&#8594;</a>
+                    </div>
+                </div>
+                <script src="galeria.js"></script>
+            </div>
+
+            <div class="proj-section">
+                <h2 class="proj-section-title">Tecnologías</h2>
+                <div class="proj-tech-icons">
+                    <a href="https://www.python.org" target="_blank" rel="noreferrer">
+                        <img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/python/python-original.svg" alt="Python"/>
+                        <span style="font-size:0.72rem;color:var(--text-3);">Python</span>
+                    </a>
+                    <a href="https://docs.python.org/3/library/tkinter.html" target="_blank" rel="noreferrer">
+                        <img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/python/python-original.svg" alt="Tkinter"/>
+                        <span style="font-size:0.72rem;color:var(--text-3);">Tkinter</span>
+                    </a>
+                </div>
+            </div>
+
+            <div class="proj-section">
+                <h2 class="proj-section-title">Descripción</h2>
+                <div class="proj-description">
+                    <p>Programa que analiza sentimientos en textos usando <strong>lógica difusa</strong>. Permite cargar un archivo CSV con frases o comentarios y muestra si cada texto es positivo, negativo o neutro en una tabla.</p>
+                    <p>El proceso limpia el texto eliminando palabras vacías mediante <strong>PLN</strong>, aplica análisis de sentimientos con <strong>VaderSentiment</strong> para obtener puntuaciones y finalmente usa lógica difusa para obtener un resultado más preciso.</p>
+                    <p><strong>Casos de uso:</strong> análisis de opiniones de clientes, comentarios en redes sociales, proyectos académicos de análisis de datos sentimentales.</p>
+                </div>
+            </div>
+
+            <div class="proj-section">
+                <h2 class="proj-section-title">Código fuente</h2>
+                <div class="proj-code-box">
+                    <svg viewBox="0 0 24 24" fill="currentColor" width="28" height="28"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/></svg>
+                    <p>Repositorio disponible en GitHub con el código fuente completo del proyecto.</p>
+                    <a href="https://github.com/JaimeNVZA/FeelFuzzy" target="_blank" rel="noreferrer" class="btn btn-primary">Ver en GitHub</a>
+                </div>
+            </div>
+        </div>
+    </template>
+
+
+    <!-- ====================================================
+         TEMPLATE: Proyecto 6 — Monitor de Consumo Bovino
+         ==================================================== -->
+    <template id="template-proyecto6">
+        <div class="proj-page">
+            <div class="proj-hero">
+                <span class="proj-hero-tag">Sistema Embebido · IoT · Arduino</span>
+                <h1>Monitor de Consumo Bovino</h1>
+                <p class="subtitle">Prototipo IoT para medir y registrar el consumo de alimento de ganado bovino en tiempo real.</p>
+            </div>
+
+            <div class="proj-section">
+                <h2 class="proj-section-title">Imágenes</h2>
+                <div class="proj-gallery">
+                    <img id="imagenActual" class="imagen-actual" src="./images/ci/1.2.jpg" alt="Monitor Bovino">
+                    <ul id="listaImagenes" style="display:none;">
+                        <li><img src="./images/ci/1.2.jpg" alt=""></li>
+                        <li><img src="./images/ci/6.png"   alt=""></li>
+                        <li><img src="./images/ci/7.png"   alt=""></li>
+                        <li><img src="./images/ci/3.png"   alt=""></li>
+                    </ul>
+                    <div class="gallery-controls">
+                        <a id="botonAnterior" class="gallery-btn">&#8592;</a>
+                        <a id="botonSiguiente" class="gallery-btn">&#8594;</a>
+                    </div>
+                </div>
+                <script src="galeria.js"></script>
+            </div>
+
+            <div class="proj-section">
+                <h2 class="proj-section-title">Tecnologías</h2>
+                <div class="proj-tech-icons">
+                    <a href="https://www.arduino.cc/" target="_blank" rel="noreferrer">
+                        <img src="https://cdn.worldvectorlogo.com/logos/arduino-1.svg" alt="Arduino"/>
+                        <span style="font-size:0.72rem;color:var(--text-3);">Arduino</span>
+                    </a>
+                    <a href="https://www.python.org" target="_blank" rel="noreferrer">
+                        <img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/python/python-original.svg" alt="Python"/>
+                        <span style="font-size:0.72rem;color:var(--text-3);">Python</span>
+                    </a>
+                </div>
+            </div>
+
+            <div class="proj-section">
+                <h2 class="proj-section-title">Descripción</h2>
+                <div class="proj-description">
+                    <p>Prototipo que mide y registra el consumo de alimento de bovinos mediante un <strong>sensor de peso</strong>. Registra cuánto alimento se coloca en el comedero y cuánto es consumido.</p>
+                    <p><strong>Monitoreo continuo:</strong> el sistema mantiene información actualizada sobre el peso del alimento disponible en el comedero.</p>
+                    <p><strong>Visualización en tiempo real:</strong> una pantalla LCD muestra el peso del alimento en tiempo real al encargado del ganado.</p>
+                    <p><strong>Envío de datos:</strong> los datos recolectados se envían a un sistema central para ser analizados, permitiendo tomar decisiones basadas en el comportamiento alimenticio del ganado.</p>
+                </div>
+            </div>
+
+            <div class="proj-section">
+                <h2 class="proj-section-title">Código fuente</h2>
+                <div class="proj-code-box">
+                    <svg viewBox="0 0 24 24" fill="currentColor" width="28" height="28"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/></svg>
+                    <p>Repositorio disponible en GitHub con el código fuente completo del proyecto.</p>
+                    <a href="https://github.com/JaimeNVZA/SmartFeeding" target="_blank" rel="noreferrer" class="btn btn-primary">Ver en GitHub</a>
+                </div>
+            </div>
+        </div>
+    </template>
+
+
+    <!-- FOOTER -->
+    <footer style="margin-top:60px;">
+        <div class="footer-inner">
+            <span class="footer-logo">JNV</span>
+            <p>&copy; 2025 Jaime Núñez Viedma. Todos los derechos reservados.</p>
+            <div class="footer-links">
+                <a href="https://github.com/JaimeNVZA" target="_blank" rel="noreferrer">GitHub</a>
+                <a href="https://www.linkedin.com/in/jaime-nunez-viedma" target="_blank" rel="noreferrer">LinkedIn</a>
+            </div>
+        </div>
     </footer>
-</div>
-<!-- css y javascript -->
-<script src="templates.js"></script>
-<script src="utils.js"></script>
+
+    <!-- Floating contact button -->
+    <button class="btn-contacto" id="botonContacto" aria-label="Contacto rápido">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="22" height="22">
+            <path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z"/>
+        </svg>
+    </button>
+    <div class="cuadro-contacto" id="cuadroContacto">
+        <h3>Contacto rápido</h3>
+        <ul>
+            <li>
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="14" height="14"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+                <a href="mailto:jaimenunezviedma@gmail.com">jaimenunezviedma@gmail.com</a>
+            </li>
+            <li>
+                <svg viewBox="0 0 24 24" fill="currentColor" width="14" height="14"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+                <a href="https://www.linkedin.com/in/jaime-nunez-viedma" target="_blank" rel="noreferrer">LinkedIn</a>
+            </li>
+            <li>
+                <svg viewBox="0 0 24 24" fill="currentColor" width="14" height="14"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/></svg>
+                <a href="https://github.com/JaimeNVZA" target="_blank" rel="noreferrer">GitHub</a>
+            </li>
+        </ul>
+    </div>
+
+    <script src="templates.js"></script>
+    <script src="utils.js"></script>
+</body>
+</html>
