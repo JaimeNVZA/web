@@ -23,4 +23,10 @@ if (proyecto === "1") {
     cargarTemplate("template-proyecto5");
 } else if (proyecto === "6") {
     cargarTemplate("template-proyecto6");
+} else if (proyecto === "7") {
+    cargarTemplate("template-proyecto7");
+} else if (proyecto === "8") {
+    cargarTemplate("template-proyecto8");
+} else if (proyecto === "9") {
+    cargarTemplate("template-proyecto9");
 }
